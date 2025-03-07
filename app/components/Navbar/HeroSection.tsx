@@ -1,0 +1,58 @@
+import Image from "next/image";
+
+export default function HeroSection() {
+  return (
+    <section className="relative flex  flex-col md:flex-row items-center justify-between w-full h-[80vh] bg-[#7C4EE4] px-8 md:px-28 overflow-hidden">
+      
+      {/* Top Left Pattern */}
+      <div className="absolute top-[-50px] left-0 w-64 h-64 md:w-[600px] md:h-96 opacity-50 pointer-events-none">
+        <Image
+          src="/svg/parttern.svg"
+          alt="Pattern"
+          layout="intrinsic"
+          width={900}
+          height={700}
+        />
+      </div>
+
+      {/* Bottom Right Pattern */}
+      <div className="absolute bottom-[-10px] right-0 w-64 h-64 md:w-[600px] md:h-80 opacity-50 pointer-events-none">
+        <Image
+          src="/svg/pattern2.svg"
+          alt="Pattern"
+          layout="intrinsic"
+          width={900}
+          height={700}
+        />
+      </div>
+
+      {/* Left Content */}
+      <div className="w-full md:w-1/2 mt-16 text-center space-y-4 md:text-left">
+      <h3 className="text-lg text-white font-semibold">Featured post</h3>
+        <h1 className="text-6xl font-bold text-white">
+         How AI will change the future 
+        </h1>
+        <p className="text-lg text-white mt-4">
+        The future of AI will see home robots having enhanced intelligence, increased capabilities, and becoming more personal and possibly cute. For example, home robots will overcome navigation, direction
+        </p>
+
+        {/* CTA Button */}
+        <button className="mt-6 px-8 py-3 text-lg font-semibold bg-white text-black rounded-lg hover:bg-blue-700 transition">
+          Read more
+        </button>
+      </div>
+
+      {/* Right Image */}
+      <div className="w-full z-50 md:w-1/2 flex justify-center">
+        <Image
+          src="/image/heroimage.png"
+          alt="Hero Image"
+          width={500}
+          height={400}
+          className="rounded-lg"
+        />
+      </div>
+
+    </section>
+  );
+}
