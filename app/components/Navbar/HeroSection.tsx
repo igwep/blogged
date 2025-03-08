@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex  flex-col md:flex-row items-center justify-between w-full h-[80vh] bg-[#7C4EE4] px-8 md:px-28 overflow-hidden">
+    <section className="relative flex  flex-col md:flex-row items-center justify-between w-full md:h-[80vh] bg-[#7C4EE4] px-8 md:px-28 overflow-hidden">
       
       {/* Top Left Pattern */}
-      <div className="absolute top-[-50px] left-0 w-64 h-64 md:w-[600px] md:h-96 opacity-50 pointer-events-none">
+      <div className="absolute top-[-50px] left-0 w-64  h-64 md:w-[600px] md:h-96 opacity-50 pointer-events-none">
         <Image
           src="/svg/parttern.svg"
           alt="Pattern"
@@ -27,23 +27,23 @@ export default function HeroSection() {
       </div>
 
       {/* Left Content */}
-      <div className="w-full md:w-1/2 mt-16 text-center space-y-4 md:text-left">
-      <h3 className="text-lg text-white font-semibold">Featured post</h3>
-        <h1 className="text-6xl font-bold text-white">
+      <div className="w-full md:w-1/2 mt-16 text-start space-y-4 md:text-left">
+      <h3 className="text-lg text-white dark:text-[#181A2A] font-semibold">Featured post</h3>
+        <h1 className="text-6xl font-bold text-white dark:text-[#181A2A]   ">
          How AI will change the future 
         </h1>
-        <p className="text-lg text-white mt-4">
+        <p className="text-lg text-white dark:text-[#181A2A] mt-4 w-[80%] ">
         The future of AI will see home robots having enhanced intelligence, increased capabilities, and becoming more personal and possibly cute. For example, home robots will overcome navigation, direction
         </p>
 
         {/* CTA Button */}
-        <button className="mt-6 px-8 py-3 text-lg font-semibold bg-white text-black rounded-lg hover:bg-blue-700 transition">
+        <button className="mt-6 px-8 py-3 text-lg font-semibold bg-white dark:bg-[#181A2A] text-black dark:text-white rounded-lg hover:bg-blue-700 transition">
           Read more
         </button>
       </div>
 
       {/* Right Image */}
-      <div className="w-full z-50 md:w-1/2 flex justify-center">
+      <div className="w-full z-50 md:w-1/2 mt-4 md:mt-0 flex justify-center">
         <Image
           src="/image/heroimage.png"
           alt="Hero Image"

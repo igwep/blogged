@@ -6,7 +6,7 @@ import Links from "./Links";
 export const Navbar = () => {
   return (
     <header> {/* ✅ Wrap in header */}
-      <nav className="flex font-body justify-between items-center bg-white text-black px-28 py-4 dark:bg-black dark:text-white">
+      <nav className="flex font-body justify-between items-center bg-white text-black md:px-28 px-8 py-4 dark:bg-[#181A2A] dark:text-white">
         {/* Logo */}
         <div>
           <Image
