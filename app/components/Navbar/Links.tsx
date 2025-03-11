@@ -1,31 +1,76 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import SearchButton from "./SearchButton";
 import ThemeToggle from "./ThemeToggle";
 import Image from "next/image";
+import { sanityClient } from "@/app/lib/sanityClient";
+//import { FetchBlogsByUrl } from "@/app/utils/FetchBlogs";
+//import { uploadBlogsToSanity } from "@/app/utils/UploadBlogsToSanity";
+
+interface NavLink {
+  label: string;
+  url:string;
+}
 
 const Links = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [navLink, setNavLinks] = useState<NavLink[]>([]);
+
+    useEffect(()=>{
+      const fetchNav = async () =>{
+        const data = await sanityClient.fetch(`*[_type == "navigation"][0] { links }`);
+        setNavLinks(data?.links || [])
+      }
+      fetchNav();
+    
+    },[])
+
+  /* useEffect(() => {
+    const fetchBlogs = async () => {
+      const blogs = await FetchBlogsByUrl("https://developers.googleblog.com/en/");
+      console.log("Fetched Blogs:", blogs); // Should now appear in console
+    };
+
+    fetchBlogs();
+  }, []); */
+
+  /* const handleUploadBlogs = async () => {
+    
+    try {
+      await uploadBlogsToSanity("https://developers.googleblog.com/en/");
+      console.log("Upload process completed.");
+    } catch (error) {
+      console.error("Error during upload:", error);
+    }
+    
+  }; */
 
   return (
     <>
       {/* Desktop Navigation */}
       <div className="md:flex hidden items-center gap-3">
         <div className="flex gap-8 items-center text-lg">
-          <span>Blog</span>
-          <span>
-            <Link href="/about">About</Link>
-          </span>
+         <ul className="flex gap-8">
+         {
+          navLink?.map((link:any)=>(
+            <li key={link.url}>
+            <a href={link.url}>{link.label}</a>
+          </li>
+          ))
+         }
+         </ul>
           <SearchButton /> {/* Search Icon */}
-          <button className="px-8 py-3 bg-[#7C4EE4] rounded-md text-white dark:text-black">
+          <button
+          /* onClick={handleUploadBlogs} */
+          /* onClick={() => uploadBlogsToSanity("https://developers.googleblog.com/en/")} */
+          className="px-8 py-3 bg-[#7C4EE4] rounded-md text-white dark:text-black">
             Contact
           </button>
         </div>
         {/* Theme Toggle */}
         <ThemeToggle />
       </div>
-
       {/* Mobile Menu Button */}
       <button
         className="md:hidden flex items-center"
@@ -40,7 +85,6 @@ const Links = () => {
           className="dark:invert"
         />
       </button>
-
       {/* Mobile Navigation Drawer */}
       <div
         className={`fixed top-0 right-0 h-full w-64 p-2 bg-white dark:bg-black shadow-lg transform ${
