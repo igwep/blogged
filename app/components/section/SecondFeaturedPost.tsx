@@ -5,9 +5,9 @@ import ReadMoreBtn from '../buttons/ReadMoreBtn';
 const SecondFeaturedPost = () => {
 
   return (
-    <section className="relative w-full h-auto dark:bg-[#181A2A] flex flex-col items-center justify-center md:px-28 md:py-28 p-8">
+    <section className="relative w-full h-auto bg-gray-100 dark:bg-[#181A2A] flex flex-col items-center justify-center md:px-28 md:py-28 p-8">
       {/* Wrapper Container: Has border on mobile; no border on desktop */}
-      <div className="relative w-full border flex flex-col space-y-5 border-gray-300 dark:border-gray-700 md:border-0 rounded-lg  p-4 py-8">
+      <div className="relative bg-white md:bg-transparent w-full border flex flex-col space-y-5 border-gray-300 dark:border-gray-700 md:border-0 rounded-lg  p-4 py-8">
         {/* Large Image */}
         <div className="w-full flex items-center justify-center">
           <Image

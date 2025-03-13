@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Raleway,Roboto } from "next/font/google";
 import { Navbar } from "./components/Navbar/Navbar";
+import QueryProvider from "./providers/QueryClient";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -37,8 +38,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${raleway.variable} antialiased`}
       >
-          <Navbar />
+        <QueryProvider>
+        <Navbar />
         {children}
+        </QueryProvider>
       </body>
     </html>
   );

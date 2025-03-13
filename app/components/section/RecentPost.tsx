@@ -1,42 +1,98 @@
+"use client"
 import React from 'react'
 import ViewAllBtn from '../buttons/ViewAllBtn'
 import Image from 'next/image'
 import ReadMoreBtn from '../buttons/ReadMoreBtn'
+import { useAllPosts, useLatestPost } from '@/app/hooks/quearies'
+import { format } from 'date-fns' // Import date formatting
+
+
+// 🌀 Loading Component
+const Loader = () => (
+  <div className="flex justify-center items-center w-full h-[500px]">
+    <p className="text-lg text-gray-600 dark:text-gray-300">Loading...</p>
+  </div>
+);
 
 const RecentPost = () => {
-  return (
-    <div className='w-full mt-10 px-28 space-y-6'>
-        <div className='flex  justify-between items-center'>
-            <h1 className='text-5xl font-semibold'>Our Recent Post</h1>
-           <ViewAllBtn>View All</ViewAllBtn>
-        </div>
-         <section className=" flex gap-4  flex-col md:flex-row items-start mt-24  justify-between w-full  ">
-         <div className="w-full md:w-[75%] h-[500px] mt-4 md:mt-0 flex">
-  <Image
-    src="/image/guywithheadset.jpg"
-    alt="Hero Image"
-    layout="responsive"
-    width={712} // Aspect ratio width
-    height={400} // Aspect ratio height
-    objectFit="cover" // Ensures it fills properly
-    className="rounded-lg"
-  />
-</div>
+  // Fetch all posts and latest post
+  const {  isLoading: loadingPosts, error: errorPosts } = useAllPosts();
+  const { data: latestPost, isLoading: loadingLatest, error: errorLatest } = useLatestPost();
 
-              <div className="w-full md:w-1/2  text-start space-y-8 md:text-left">
-              <div className='flex  gap-2 items-center font-rob'> <h3 className=" text-[#333333] dark:text-white font-semibold">Development</h3> <span className='text-[#666666] dark:text-gray-300'>16 march 2022</span></div>
-                <h1 className="text-4xl font-bold dark:text-white text-[#181A2A]   ">
-                How to make a Game look more attractive with New VR & AI Technology
-                </h1>
-                <p className="text-lg dark:text-white text-[#181A2A] mt-4  ">
-                The future of AI will see home robots having enhanced intelligence, increased capabilities, and becoming more personal and possibly cute. For example, home robots will overcome navigation, direction
-                </p>
-                {/* CTA Button */}
-                    <ReadMoreBtn>
-                        Read more
-                    </ReadMoreBtn>
-              </div>
-            </section>
+
+  // Format date if available
+  const formattedDate = latestPost?._createdAt ? format(new Date(latestPost._createdAt), "dd MMMM yyyy") : "Unknown Date";
+
+  // Extract first 150 characters from body as preview text
+  const extractTextFromHTML = (html: string): string => {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    return doc.body.textContent || "No description available.";
+  };
+  
+  // Generate preview text
+  const previewText = latestPost?.body
+    ? extractTextFromHTML(latestPost.body).slice(0, 250) + "..."
+    : "No description available.";
+  
+
+  return (
+    <div className='w-full pt-10 px-28 bg-gray-100 space-y-6'>
+      <div className='flex justify-between items-center'>
+        <h1 className='text-5xl font-semibold'>Our Recent Post</h1>
+        <ViewAllBtn>View All</ViewAllBtn>
+      </div>
+
+      {/* If loading, show the loader */}
+      {(loadingLatest || loadingPosts) && <Loader />}
+
+      {/* If error, display error message */}
+      {(errorLatest || errorPosts) && (
+        <p className="text-red-500 text-center">Error loading posts. Please try again.</p>
+      )}
+
+      {/* Render only when data is available */}
+      {!loadingLatest && !loadingPosts && !errorLatest && !errorPosts && latestPost && (
+        <section className="flex gap-4 flex-col md:flex-row items-start mt-24 justify-between w-full">
+          {/* Image Section */}
+          <div className="w-full md:w-[75%] h-[500px] mt-4 md:mt-0 flex">
+            <Image
+              src={latestPost?.mainImage?.asset?.url || "/placeholder-image.jpg"} // Fallback image
+              alt={latestPost?.title || "Latest Post Image"}
+              layout="responsive"
+              width={712}
+              height={400}
+              priority
+              unoptimized // Ensures Next.js doesn’t block external images
+              className="rounded-lg"
+            />
+          </div>
+
+          {/* Text Content */}
+          <div className="w-full md:w-1/2 text-start space-y-8 md:text-left">
+            {/* Date & Category */}
+            <div className='flex gap-2 items-center font-rob'>
+              <h3 className="text-[#333333] dark:text-white font-semibold">{latestPost?.categories?.map((cat: any) => cat.title).join(", ") || "Uncategorized"}</h3>
+              <span className='text-[#666666] dark:text-gray-300'>{formattedDate}</span>
+            </div>
+
+            {/* Dynamic Post Title */}
+            <h1 className="text-4xl font-bold dark:text-white text-[#181A2A]">
+              {latestPost?.title || "Untitled Post"}
+            </h1>
+
+            {/* Dynamic Post Content */}
+            <p className="text-lg dark:text-white text-[#181A2A] mt-4">
+              {previewText}
+            </p>
+
+            {/* CTA Button */}
+            <ReadMoreBtn>Read more</ReadMoreBtn>
+          </div>
+          
+
+
+        </section>
+      )}
     </div>
   )
 }
