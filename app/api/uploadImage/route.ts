@@ -1,4 +1,4 @@
-// app/api/uploadImage/route.ts
+/* // app/api/uploadImage/route.ts
 import { NextResponse } from 'next/server';
 import { sanityClient } from '@/app/lib/sanityClient';
 
@@ -24,3 +24,5 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
   }
 }
+ */
+export {};

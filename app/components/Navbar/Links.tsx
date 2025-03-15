@@ -53,7 +53,7 @@ const Links = () => {
         <div className="flex gap-8 items-center text-lg">
          <ul className="flex gap-8">
          {
-          navLink?.map((link:any)=>(
+          navLink?.map((link: NavLink)=>(
             <li key={link.url}>
             <a href={link.url}>{link.label}</a>
           </li>

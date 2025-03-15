@@ -7,10 +7,16 @@ import { useAllPosts, useLatestPost } from '@/app/hooks/quearies'
 import { format } from 'date-fns' // Import date formatting
 
 
+interface Category {
+  title: string;
+  slug: { current: string };
+}
+
+
 // 🌀 Loading Component
 const Loader = () => (
   <div className="flex justify-center items-center w-full h-[500px]">
-    <p className="text-lg text-gray-600 dark:text-gray-300">Loading...</p>
+    <p className="text-lg text-[#181A2A] dark:text-gray-300">Loading...</p>
   </div>
 );
 
@@ -36,9 +42,9 @@ const RecentPost = () => {
   
 
   return (
-    <div className='w-full pt-10 px-28 bg-gray-100 space-y-6'>
+    <div className='w-full pt-10 px-28 bg-gray-100 dark:bg-[#181A2A] space-y-6'>
       <div className='flex justify-between items-center'>
-        <h1 className='text-5xl font-semibold'>Our Recent Post</h1>
+        <h1 className='text-5xl font-semibold dark:text-white'>Our Recent Post</h1>
         <ViewAllBtn>View All</ViewAllBtn>
       </div>
 
@@ -52,7 +58,7 @@ const RecentPost = () => {
 
       {/* Render only when data is available */}
       {!loadingLatest && !loadingPosts && !errorLatest && !errorPosts && latestPost && (
-        <section className="flex gap-4 flex-col md:flex-row items-start mt-24 justify-between w-full">
+        <section className="flex gap-4  flex-col md:flex-row items-start mt-24 justify-between w-full">
           {/* Image Section */}
           <div className="w-full md:w-[75%] h-[500px] mt-4 md:mt-0 flex">
             <Image
@@ -63,7 +69,7 @@ const RecentPost = () => {
               height={400}
               priority
               unoptimized // Ensures Next.js doesn’t block external images
-              className="rounded-lg"
+              className="rounded-xl"
             />
           </div>
 
@@ -71,7 +77,7 @@ const RecentPost = () => {
           <div className="w-full md:w-1/2 text-start space-y-8 md:text-left">
             {/* Date & Category */}
             <div className='flex gap-2 items-center font-rob'>
-              <h3 className="text-[#333333] dark:text-white font-semibold">{latestPost?.categories?.map((cat: any) => cat.title).join(", ") || "Uncategorized"}</h3>
+              <h3 className="text-[#333333] dark:text-white font-semibold">{latestPost?.categories?.map((cat: Category) => cat.title).join(", ") || "Uncategorized"}</h3>
               <span className='text-[#666666] dark:text-gray-300'>{formattedDate}</span>
             </div>
 

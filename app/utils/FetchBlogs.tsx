@@ -59,27 +59,31 @@
 
   import { sanityClient } from "../lib/sanityClient";
 
-  export const fetchAllPosts = async () => {
-    const query = `*[_type == "post"] | order(_createdAt desc) {
-      title, 
-      slug, 
-      mainImage {
-        asset->{
-          url
-        }
-      }, 
-      body, 
-      _createdAt,
-      categories[]->{
-        title,
-        slug
+export const fetchAllPosts = async () => {
+  const query = `*[_type == "post" && !(_id in path("drafts.**"))] | order(_createdAt desc) {
+    _id,  
+    title, 
+    slug, 
+    mainImage {
+      asset->{
+        url
       }
-    }`;
-  
-    const result = await sanityClient.fetch(query);
-    console.log("All Posts:", result); // ✅ Log the fetched posts with categories
-    return result;
-  };
+    }, 
+    body, 
+    _createdAt,
+    categories[]->{
+      title,
+      slug
+    }
+  }`;
+
+  const result = await sanityClient.fetch(query);
+  console.log("Filtered Posts (No Drafts):", result); //  Check if count is now correct
+
+  return result;
+};
+
+
   
 
   export const fetchLatestPost = async () => {
@@ -100,7 +104,7 @@
     }`;
   
     const result = await sanityClient.fetch(query);
-    console.log("Latest Post:", result); // ✅ Log the latest post with categories
+    console.log("Latest Post:", result); //  Log the latest post with categories
     return result;
   };
   

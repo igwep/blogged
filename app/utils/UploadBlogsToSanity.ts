@@ -1,4 +1,4 @@
-import { sanityClient } from "../lib/sanityClient";
+/* import { sanityClient } from "../lib/sanityClient";
 import { FetchBlogsByUrl } from "./FetchBlogs";
 
 // Updated function to call the API route for image uploading
@@ -66,3 +66,4 @@ export const uploadBlogsToSanity = async (blogUrl: string) => {
     }
   }
 };
+ */
