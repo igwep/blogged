@@ -13,7 +13,7 @@ interface Category {
 }
 
 
-// 🌀 Loading Component
+//  Loading Component
 const Loader = () => (
   <div className="flex justify-center items-center w-full h-[500px]">
     <p className="text-lg text-[#181A2A] dark:text-gray-300">Loading...</p>

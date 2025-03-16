@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Raleway,Roboto } from "next/font/google";
 import { Navbar } from "./components/Navbar/Navbar";
+import Footer from "./components/footer/Footer";
 import QueryProvider from "./providers/QueryClient";
 import "./globals.css";
 
@@ -41,6 +42,7 @@ export default function RootLayout({
         <QueryProvider>
         <Navbar />
         {children}
+        <Footer />
         </QueryProvider>
       </body>
     </html>

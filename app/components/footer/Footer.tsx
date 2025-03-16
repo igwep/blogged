@@ -1,0 +1,90 @@
+import React from 'react'
+import Image from 'next/image'
+
+const Footer = () => {
+  return (
+    <>
+    <section className='relative flex font-body justify-center items-center h-auto w-full bg-[#7C4EE4] p-20 overflow-hidden'>{/* subscription */}
+        {/* Top Left Pattern */}
+              <div className="absolute top-[-50px] left-0 w-64  h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
+                <Image
+                  src="/svg/parttern.svg"
+                  alt="Pattern"
+                  layout="intrinsic"
+                  width={700}
+                  height={700}
+                />
+              </div>
+        
+              {/* Bottom Right Pattern */}
+              <div className="absolute bottom-[-10px] right-0 w-64 h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
+                <Image
+                  src="/svg/pattern2.svg"
+                  alt="Pattern"
+                  layout="intrinsic"
+                  width={700}
+                  height={700}
+                />
+              </div>
+<div className='flex  flex-col gap-8 w-1/2 items-center justify-center' >
+<h1 className='text-5xl text-center font-semibold text-white dark:text-[#181A2A]'>
+Get our stories delivered  From us to your inbox weekly.
+</h1>
+<div className='flex gap-2'>{/* email input  */}
+<input type="email"
+placeholder='Your Email'
+className='bg-white dark:bg-[#181A2A] dark:placeholder:text-white px-4 w-72 rounded-md' />
+<button className='border border-white dark:border-[#181A2A] dark:text-[#181A2A] font-semibold text-white px-6 py-3 rounded-md '>
+    Get started
+</button>
+
+</div>
+
+<span className='text-center text-[#BBBBBB] dark:text-[#21243a]'>
+Get a response tomorrow if you submit by 9pm today. If we received after 9pm will get a reponse the following day.
+</span>
+</div>
+    </section>
+    <section className='bg-white dark:bg-[#181A2A] flex justify-center p-10'>
+       <div className='flex flex-col items-center gap-6 w-full'> 
+
+       <div className="flex gap-2 items-center ">
+                  <Image
+                    src="/svg/MainLogo.svg"
+                    alt="logo"
+                    width={40}
+                    height={40}
+        
+                  />
+                  <span className="text-3xl font-bold dark:text-white">BlogSpot</span>
+                </div>
+
+                <ul className='flex gap-8  dark:text-white'>
+                    <li>Home</li>
+                    <li>Blog</li>
+                    <li>About</li>
+                    <li>Contact Us</li>
+                </ul>
+
+                <div className='flex gap-4 text-white dark:text-black'>{/* social media */}
+                    <button className='rounded-full bg-[#7C4EE4] px-2 py-1'>FB</button>
+                    <button className='rounded-full bg-[#7C4EE4] px-2 py-1'>IG</button>
+                    <button className='rounded-full bg-[#7C4EE4] px-2 py-1 text-sm'>LN</button>
+                    <button className='rounded-full bg-[#7C4EE4] px-2 py-1'>YT</button>
+
+                </div>
+                <div className='border border-[#7C4EE4] w-full'>
+
+                </div>
+                Copyright BlogSpot Inc © {new Date().getFullYear()}. All Rights Reserved.
+       </div>
+        
+
+
+    </section>
+    
+    </>
+  )
+}
+
+export default Footer

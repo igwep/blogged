@@ -4,7 +4,7 @@ export default function HeroSection() {
   return (
     <section className="relative flex py-4  flex-col md:flex-row items-center justify-between w-full h-auto md:h-[80vh] bg-[#7C4EE4] px-8 md:px-28 overflow-hidden">
       {/* Top Left Pattern */}
-      <div className="absolute top-[-50px] left-0 w-64  h-64 md:w-[600px] md:h-96 opacity-50 pointer-events-none">
+      <div className="absolute top-[-50px] left-0 w-64  h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
         <Image
           src="/svg/parttern.svg"
           alt="Pattern"
@@ -15,7 +15,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom Right Pattern */}
-      <div className="absolute bottom-[-10px] right-0 w-64 h-64 md:w-[600px] md:h-80 opacity-50 pointer-events-none">
+      <div className="absolute bottom-[-10px] right-0 w-64 h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
         <Image
           src="/svg/pattern2.svg"
           alt="Pattern"

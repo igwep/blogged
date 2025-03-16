@@ -19,15 +19,26 @@ interface Post {
   _createdAt: string;
   categories?: Category[];
 }
-const PostCards = () => {
+const PostCards = ({ 
+  slice, 
+  numberOfCards, 
+  startIndex 
+}: { 
+  slice: boolean;  
+  numberOfCards: number; 
+  startIndex: number; 
+}) => {
   const { data: posts, isLoading, error } = useAllPosts();
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p className="text-red-500">Error loading posts.</p>;
 
+  // Conditionally slice the posts if `slice` is true
+  const displayedPosts = slice ? posts?.slice(startIndex, numberOfCards) : posts;
+
   return (
-    <div className="grid grid-cols-1 bg-gray-100 dark:bg-[#181A2A] md:grid-cols-3 gap-8 px-28 pt-8">
-      {posts?.slice(1, 4).map((post: Post) => { // ✅ Limit to 3 posts
+    <div className="grid grid-cols-1 bg-gray-100 dark:bg-[#181A2A] md:grid-cols-3 gap-8 px-28 pt-8 pb-8">
+      {displayedPosts?.map((post: Post) => { 
         // Format date
         const formattedDate = post._createdAt
           ? format(new Date(post._createdAt), "dd MMMM yyyy")
@@ -49,9 +60,9 @@ const PostCards = () => {
               <Image
                 src={post?.mainImage?.asset?.url || "/placeholder-image.jpg"}
                 alt={post?.title || "Post Image"}
-                width={400} // Fixed width
-                height={250} // Fixed height
-                className="w-full h-full object-cover rounded-xl" // Ensures all images fit uniformly
+                width={400} 
+                height={250} 
+                className="w-full h-full object-cover rounded-xl" 
               />
             </div>
             {/* Text Content */}
@@ -85,5 +96,6 @@ const PostCards = () => {
     </div>
   );
 };
+
 
 export default PostCards;
