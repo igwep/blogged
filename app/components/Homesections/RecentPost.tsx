@@ -42,9 +42,9 @@ const RecentPost = () => {
   
 
   return (
-    <div className='w-full pt-10 px-28 bg-gray-100 dark:bg-[#181A2A] space-y-6'>
+    <div className='w-full pt-10 md:px-28 px-8 bg-gray-100 dark:bg-[#181A2A] space-y-6'>
       <div className='flex justify-between items-center'>
-        <h1 className='text-5xl font-semibold dark:text-white'>Our Recent Post</h1>
+        <h1 className='md:text-5xl text-3xl font-semibold dark:text-white'>Our Recent Post</h1>
         <ViewAllBtn>View All</ViewAllBtn>
       </div>
 
@@ -58,9 +58,9 @@ const RecentPost = () => {
 
       {/* Render only when data is available */}
       {!loadingLatest && !loadingPosts && !errorLatest && !errorPosts && latestPost && (
-        <section className="flex gap-4  flex-col md:flex-row items-start mt-24 justify-between w-full">
+        <section className="flex gap-4  flex-col md:flex-row items-start md:mt-24 justify-between w-full">
           {/* Image Section */}
-          <div className="w-full md:w-[75%] h-[500px] mt-4 md:mt-0 flex">
+          <div className="w-full md:w-[75%] md:h-[500px] mt-4 md:mt-0 flex">
             <Image
               src={latestPost?.mainImage?.asset?.url || "/placeholder-image.jpg"} // Fallback image
               alt={latestPost?.title || "Latest Post Image"}

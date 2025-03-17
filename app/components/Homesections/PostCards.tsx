@@ -37,7 +37,7 @@ const PostCards = ({
   const displayedPosts = slice ? posts?.slice(startIndex, numberOfCards) : posts;
 
   return (
-    <div className="grid grid-cols-1 bg-gray-100 dark:bg-[#181A2A] md:grid-cols-3 gap-8 px-28 pt-8 pb-8">
+    <div className="grid grid-cols-1 bg-gray-100 dark:bg-[#181A2A] md:grid-cols-3 gap-8 md:px-28 px-8 pt-8 pb-8">
       {displayedPosts?.map((post: Post) => { 
         // Format date
         const formattedDate = post._createdAt

@@ -1,8 +1,8 @@
-import HeroSection from "./components/section/HeroSection";
-import SecondFeaturedPost from "./components/section/SecondFeaturedPost";
-import RecentPost from "./components/section/RecentPost";
-import PostCards from "./components/section/PostCards";
-import MorePostSection from "./components/section/MorePostSection";
+import HeroSection from "./components/Homesections/HeroSection";
+import SecondFeaturedPost from "./components/Homesections/SecondFeaturedPost";
+import RecentPost from "./components/Homesections/RecentPost";
+import PostCards from "./components/Homesections/PostCards";
+import MorePostSection from "./components/Homesections/MorePostSection";
 
 
 export default function Home() {

@@ -4,9 +4,9 @@ import Image from 'next/image'
 const Footer = () => {
   return (
     <>
-    <section className='relative flex font-body justify-center items-center h-auto w-full bg-[#7C4EE4] p-20 overflow-hidden'>{/* subscription */}
+    <section className='relative flex font-body justify-center items-center h-auto w-full bg-[#7C4EE4] py-20 px-4 md:px-20 overflow-hidden'>{/* subscription */}
         {/* Top Left Pattern */}
-              <div className="absolute top-[-50px] left-0 w-64  h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
+              <div className="absolute md:top-[-50px] top-[-50px] left-0 w-64  h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
                 <Image
                   src="/svg/parttern.svg"
                   alt="Pattern"
@@ -17,7 +17,7 @@ const Footer = () => {
               </div>
         
               {/* Bottom Right Pattern */}
-              <div className="absolute bottom-[-10px] right-0 w-64 h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
+              <div className="absolute md:bottom-[-10px] bottom-[-100px] right-0 w-64 h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
                 <Image
                   src="/svg/pattern2.svg"
                   alt="Pattern"
@@ -26,8 +26,8 @@ const Footer = () => {
                   height={700}
                 />
               </div>
-<div className='flex  flex-col gap-8 w-1/2 items-center justify-center' >
-<h1 className='text-5xl text-center font-semibold text-white dark:text-[#181A2A]'>
+<div className='flex  flex-col gap-8 md:w-1/2 items-center justify-center' >
+<h1 className='md:text-5xl text-3xl text-center font-semibold text-white dark:text-[#181A2A]'>
 Get our stories delivered  From us to your inbox weekly.
 </h1>
 <div className='flex gap-2'>{/* email input  */}
@@ -45,7 +45,7 @@ Get a response tomorrow if you submit by 9pm today. If we received after 9pm wil
 </span>
 </div>
     </section>
-    <section className='bg-white dark:bg-[#181A2A] flex justify-center p-10'>
+    <section className='bg-white dark:bg-[#181A2A] flex justify-center md:p-10 py-8 '>
        <div className='flex flex-col items-center gap-6 w-full'> 
 
        <div className="flex gap-2 items-center ">
@@ -76,7 +76,9 @@ Get a response tomorrow if you submit by 9pm today. If we received after 9pm wil
                 <div className='border border-[#7C4EE4] w-full'>
 
                 </div>
+                <span className='pt-5 pb-8 dark:text-white'>
                 Copyright BlogSpot Inc © {new Date().getFullYear()}. All Rights Reserved.
+                </span>
        </div>
         
 

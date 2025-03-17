@@ -1,9 +1,14 @@
 import React from 'react'
+import HeroSections from '../components/AboutSections/HeroSections'
+import SecondSection from '../components/AboutSections/SecondSection'
 
 const About = () => {
   
   return (
-    <div>About</div>
+    <div>
+      <HeroSections />
+      <SecondSection />
+    </div>
   )
 }
 
