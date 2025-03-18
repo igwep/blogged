@@ -1,10 +1,12 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import SearchButton from "./SearchButton";
 import ThemeToggle from "./ThemeToggle";
 import Image from "next/image";
-import { sanityClient } from "@/app/lib/sanityClient";
+import { usePathname } from "next/navigation";
+//import { sanityClient } from "@/app/lib/sanityClient";
 //import { FetchBlogsByUrl } from "@/app/utils/FetchBlogs";
 //import { uploadBlogsToSanity } from "@/app/utils/UploadBlogsToSanity";
 
@@ -12,19 +14,26 @@ interface NavLink {
   label: string;
   url:string;
 }
+const navLink: NavLink[] = [
+  { label: "Blog", url: "/blog" },
+  { label: "About", url: "/about" },
+ 
+];
 
 const Links = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [navLink, setNavLinks] = useState<NavLink[]>([]);
+ // const [isActive, setIsActive] = useState<string>('')
+ const pathname = usePathname();
+  /* const [navLink, setNavLinks] = useState<NavLink[]>([]); */
 
-    useEffect(()=>{
+   /*  useEffect(()=>{
       const fetchNav = async () =>{
         const data = await sanityClient.fetch(`*[_type == "navigation"][0] { links }`);
         setNavLinks(data?.links || [])
       }
       fetchNav();
     
-    },[])
+    },[]) */
 
   /* useEffect(() => {
     const fetchBlogs = async () => {
@@ -52,13 +61,17 @@ const Links = () => {
       <div className="md:flex hidden items-center gap-3">
         <div className="flex gap-8 items-center text-lg">
          <ul className="flex gap-8">
-         {
-          navLink?.map((link: NavLink)=>(
-            <li key={link.url}>
-            <a href={link.url}>{link.label}</a>
-          </li>
-          ))
-         }
+         {navLink?.map((link: NavLink) => (
+      <li key={link.url}>
+        <a
+          href={link.url}
+         // onClick={() => setIsActive(link.url)}
+          className={pathname === link.url ? 'text-[#7C4EE4]' : ''}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
          </ul>
           <SearchButton /> {/* Search Icon */}
           <button

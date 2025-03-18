@@ -50,13 +50,13 @@ const PostCards = ({
           return doc.body.textContent || "No description available.";
         };  
         const previewText = post?.body
-          ? extractTextFromHTML(post.body).slice(0, 200) + "..."
+          ? extractTextFromHTML(post.body).slice(0, 120) + "..."
           : "No description available.";
 
         return (
           <div key={post._id} className="space-y-4">
             {/* Image Section */}
-            <div className="w-full h-[250px] overflow-hidden">
+            <div className="w-full h-[300px] overflow-hidden">
               <Image
                 src={post?.mainImage?.asset?.url || "/placeholder-image.jpg"}
                 alt={post?.title || "Post Image"}
@@ -78,17 +78,17 @@ const PostCards = ({
                 </span>
               </div>
               {/* Dynamic Post Title */}
-              <h1 className="text-2xl font-bold dark:text-white text-[#181A2A] h-12 overflow-hidden text-ellipsis whitespace-nowrap">
+              <h1 className="md:text-2xl text-xl font-bold dark:text-white text-[#181A2A] h-12 overflow-hidden text-ellipsis whitespace-nowrap">
                 {post?.title.length > 50
                   ? post?.title.slice(0, 50) + "..."
                   : post?.title || "Untitled Post"}
               </h1>
               {/* Dynamic Post Content */}
-              <p className="text-lg dark:text-white text-[#181A2A] mt-2">
+              <p className="md:text-lg dark:text-white text-[#181A2A] mt-2">
                 {previewText}
               </p>
               {/* Read More Button */}
-              <button className="font-semibold underline text-[#7C4EE4] text-lg">Read more...</button>
+              <button className="font-semibold underline text-[#7C4EE4] md:text-lg">Read more...</button>
             </div>
           </div>
         );

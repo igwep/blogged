@@ -3,14 +3,14 @@ import AboutCard from './AboutCards'
 
 const SecondSection = () => {
   return (
-    <section className='px-8 md:px-28 bg-gray-100 w-full pt-20'>
+    <section className='px-8 md:px-28 bg-gray-100 dark:bg-[#181A2A] w-full pt-20'>
         <div className='w-full flex md:flex-row flex-col justify-between space-y-4'>
             <div className='md:w-[40%] flex flex-col gap-8'>
-                <p className='text-[#666666] font-semibold'>HOW WE WORK</p>
-                <p className='md:text-5xl text-3xl font-semibold font-body leading-snug text-[#333333]'>I will show you how our team works</p>
+                <p className='text-[#666666] dark:text-white font-semibold'>HOW WE WORK</p>
+                <p className='md:text-5xl text-3xl font-semibold font-body leading-snug text-[#333333] dark:text-white'>I will show you how our team works</p>
             </div>
             <div className=' flex items-end justify-start'>
-                <span className='w-[80%] text-[#666666]'>
+                <span className='w-[80%] text-[#666666] dark:text-white'>
                 Bring to the table win-win market strategies to ensure perfect articles.
                 </span>
 
