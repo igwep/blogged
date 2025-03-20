@@ -3,6 +3,8 @@ import React from "react";
 import { useAllPosts } from "@/app/hooks/quearies";
 import Image from "next/image";
 import { format } from "date-fns"; // For date formatting
+import { useRouter } from "next/navigation";
+//import { usePost } from "@/app/context/PostProvider";
 
 interface Category {
   title: string;
@@ -22,20 +24,28 @@ interface Post {
 const PostCards = ({ 
   slice, 
   numberOfCards, 
-  startIndex 
+  startIndex,
+  excludeId
 }: { 
   slice: boolean;  
   numberOfCards: number; 
   startIndex: number; 
+  excludeId?: string;
 }) => {
   const { data: posts, isLoading, error } = useAllPosts();
+  const router = useRouter();
+  const handlePostClick = (post: Post) => {
+    router.push(`/post/${post._id}`);
+  };
+  //const { setSelectedPost } = usePost();
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p className="text-red-500">Error loading posts.</p>;
 
-  // Conditionally slice the posts if `slice` is true
-  const displayedPosts = slice ? posts?.slice(startIndex, numberOfCards) : posts;
+  const filteredPosts = posts?.filter((post: Post) => post._id !== excludeId);
 
+  // Conditionally slice the posts if `slice` is true
+  const displayedPosts = slice ? filteredPosts?.slice(startIndex, numberOfCards) : filteredPosts;
   return (
     <div className="grid grid-cols-1 bg-gray-100 dark:bg-[#181A2A] md:grid-cols-3 gap-8 md:px-28 px-8 pt-8 pb-8">
       {displayedPosts?.map((post: Post) => { 
@@ -43,7 +53,7 @@ const PostCards = ({
         const formattedDate = post._createdAt
           ? format(new Date(post._createdAt), "dd MMMM yyyy")
           : "Unknown Date";
-
+          console.log("Post ID:", post._id);
         // Extract preview text from body
         const extractTextFromHTML = (html: string): string => {
           const doc = new DOMParser().parseFromString(html, "text/html");
@@ -88,7 +98,14 @@ const PostCards = ({
                 {previewText}
               </p>
               {/* Read More Button */}
-              <button className="font-semibold underline text-[#7C4EE4] md:text-lg">Read more...</button>
+              <button 
+              onClick={()=>{handlePostClick(post)
+
+              
+              }}
+              /* onClick={() => {setSelectedPost(post)
+              }}  */
+              className="font-semibold cursor-pointer underline text-[#7C4EE4] md:text-lg">Read more...</button>
             </div>
           </div>
         );

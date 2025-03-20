@@ -4,6 +4,7 @@ import { Raleway,Roboto } from "next/font/google";
 import { Navbar } from "./components/Navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import QueryProvider from "./providers/QueryClient";
+import { FooterProvider } from "./context/FooterProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,17 +34,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
     
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${raleway.variable} antialiased`}
       >
+        
         <QueryProvider>
+        <FooterProvider>
         <Navbar />
         {children}
-        <Footer />
+        <Footer  />
+        </FooterProvider>
         </QueryProvider>
+        
       </body>
     </html>
   );

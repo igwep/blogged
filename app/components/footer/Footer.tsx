@@ -1,10 +1,25 @@
-import React from 'react'
+
+//import React, {useEffect, useRef} from 'react'
 import Image from 'next/image'
+//import { useFooterContext } from '@/app/context/FooterProvider';
+
+
 
 const Footer = () => {
+  /* const { setFooterHeight } = useFooterContext();
+  const footerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (footerRef.current) {
+      setFooterHeight(footerRef.current.offsetHeight);
+    }
+  }, [setFooterHeight]); */
+
   return (
     <>
-    <section className='relative flex font-body justify-center items-center h-auto w-full bg-[#7C4EE4] py-20 px-4 md:px-20 overflow-hidden'>{/* subscription */}
+    <section
+    /* ref={footerRef} */
+    className='relative flex font-body justify-center items-center h-auto w-full bg-[#7C4EE4] py-20 px-4 md:px-20 overflow-hidden'>{/* subscription */}
         {/* Top Left Pattern */}
               <div className="absolute md:top-[-50px] top-[-50px] left-0 w-64  h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
                 <Image
