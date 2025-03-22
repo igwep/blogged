@@ -79,12 +79,12 @@ const PostPage = () => {
 
       {/* Post Content */}
       <div className="md:px-28 px-8 bg-gray-100 dark:bg-[#181A2A]  space-y-6 pt-8">
-        <h1 className="md:text-5xl text-3xl font-bold text-center dark:text-gray-300">{post.title}</h1>
+        <h1 className="md:text-5xl text-3xl  font-body font-semibold  text-[#333333] text-center dark:text-gray-300">{post.title}</h1>
 
         {/* Categories and Publish Date */}
-        <div className="mt-2 text-gray-500 dark:text-gray-300 text-sm flex gap-5">
+        <div className="mt-2 text-gray-500 font-body dark:text-gray-300 text-sm flex gap-5">
           {post.categories && post.categories.length > 0 && (
-            <span className="ml-4 font-semibold dark:text-gray-300 text-black uppercase">
+            <span className="ml-4 font-semibold dark:text-gray-300 text-[#666666] uppercase">
               {post.categories.map((cat: Category) => cat.title).join(", ")}
             </span>
           )}
@@ -93,7 +93,7 @@ const PostPage = () => {
 
         {/* Render Post Content as HTML */}
         <div
-          className="mt-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+          className="mt-4 text-lg font-body leading-relaxed text-gray-700 dark:text-gray-300"
           dangerouslySetInnerHTML={{ __html: post.body }}
         />
       </div>

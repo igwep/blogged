@@ -66,7 +66,7 @@ const Links = () => {
         <a
           href={link.url}
          // onClick={() => setIsActive(link.url)}
-          className={pathname === link.url ? 'text-[#7C4EE4]' : ''}
+          className={pathname === link.url ? 'text-[#7C4EE4]' : 'hover:text-[#7C4EE4]'}
         >
           {link.label}
         </a>
@@ -74,12 +74,12 @@ const Links = () => {
     ))}
          </ul>
           <SearchButton /> {/* Search Icon */}
-          <button
+          <a href="/contact"
           /* onClick={handleUploadBlogs} */
           /* onClick={() => uploadBlogsToSanity("https://developers.googleblog.com/en/")} */
           className="px-8 py-3 bg-[#7C4EE4] rounded-md text-white dark:text-black">
             Contact
-          </button>
+          </a>
         </div>
         {/* Theme Toggle */}
         <ThemeToggle />

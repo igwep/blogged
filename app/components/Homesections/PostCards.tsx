@@ -88,13 +88,13 @@ const PostCards = ({
                 </span>
               </div>
               {/* Dynamic Post Title */}
-              <h1 className="md:text-2xl text-xl font-bold dark:text-white text-[#181A2A] h-12 overflow-hidden text-ellipsis whitespace-nowrap">
+              <h1 className="md:text-2xl text-xl font-bold dark:text-white text-[#333333] h-12 overflow-hidden text-ellipsis whitespace-nowrap">
                 {post?.title.length > 50
                   ? post?.title.slice(0, 50) + "..."
                   : post?.title || "Untitled Post"}
               </h1>
               {/* Dynamic Post Content */}
-              <p className="md:text-lg dark:text-white text-[#181A2A] mt-2">
+              <p className="md:text-lg dark:text-white text-[#333333] mt-2">
                 {previewText}
               </p>
               {/* Read More Button */}
