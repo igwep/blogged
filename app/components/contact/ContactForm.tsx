@@ -1,12 +1,21 @@
 "use client";
 
 import { useState } from "react";
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
-    email: "",
-    message: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
   });
 
   const [error, setError] = useState("");
@@ -29,7 +38,11 @@ const ContactForm = () => {
     //  Simulate API submission (Replace with actual API call)
     setTimeout(() => {
       setSuccess("Your message has been sent!");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",});
     }, 1000);
   };
 
