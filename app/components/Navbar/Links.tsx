@@ -121,18 +121,18 @@ const Links = () => {
 
         {/* Mobile Menu Items */}
         <nav className="flex flex-col items-center mt-16 gap-6 text-lg">
-          <Link href="/" onClick={() => setIsOpen(false)}>
+          <Link href="/blog" onClick={() => setIsOpen(false)}>
             Blog
           </Link>
           <Link href="/about" onClick={() => setIsOpen(false)}>
             About
           </Link>
-          <button
-            className="px-6 py-2 w-full bg-[#7C4EE4] rounded-md text-white dark:text-black"
+          <Link href="/contact"
+            className="px-6 py-2 w-full bg-[#7C4EE4] text-center rounded-md text-white dark:text-black"
             onClick={() => setIsOpen(false)}
           >
             Contact
-          </button>
+          </Link>
           <SearchButton />
           <ThemeToggle />
         </nav>
