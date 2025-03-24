@@ -91,7 +91,7 @@ const Links = () => {
         aria-label="Toggle Menu"
       >
         <Image
-          src="/svg/menu.svg" // Change this to your burger menu icon
+          src="/svg/Menu.svg" // Change this to your burger menu icon
           alt="Menu"
           width={30}
           height={30}
