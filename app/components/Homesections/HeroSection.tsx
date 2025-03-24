@@ -5,13 +5,13 @@ export default function HeroSection() {
     <section className="relative flex py-4  flex-col md:flex-row items-center justify-between w-full h-auto md:h-[80vh] bg-[#7C4EE4] px-8 md:px-28 overflow-hidden">
       {/* Top Left Pattern */}
       <div className="absolute top-[-50px] left-0 w-64  h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
-        <Image
-          src="/svg/parttern.svg"
-          alt="Pattern"
-          layout="intrinsic"
-          width={900}
-          height={700}
-        />
+      <Image
+  src="/svg/parttern.svg"
+  alt="Pattern"
+  width={900}
+  height={700}
+  className="w-full h-auto" // Ensures responsiveness
+/>
       </div>
 
       {/* Bottom Right Pattern */}
@@ -19,9 +19,9 @@ export default function HeroSection() {
         <Image
           src="/svg/pattern2.svg"
           alt="Pattern"
-          layout="intrinsic"
           width={900}
           height={700}
+          className="w-full h-auto" // Ensures responsiveness
         />
       </div>
 

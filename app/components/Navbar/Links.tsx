@@ -100,7 +100,7 @@ const Links = () => {
       </button>
       {/* Mobile Navigation Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 p-2 bg-white dark:bg-black shadow-lg transform ${
+        className={`fixed top-0 right-0 h-full w-64 p-2 bg-white dark:bg-[#181A2A] shadow-lg transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out z-50`}
       >

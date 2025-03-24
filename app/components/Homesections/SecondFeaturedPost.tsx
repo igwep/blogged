@@ -10,15 +10,15 @@ const SecondFeaturedPost = () => {
       <div className="relative bg-white dark:bg-[#181A2A] md:bg-transparent w-full border flex flex-col space-y-5 border-gray-300 dark:border-gray-700 md:border-0 rounded-lg  p-4 py-8">
         {/* Large Image */}
         <div className="w-full flex items-center justify-center">
-          <Image
-            src="/image/guywithheadset.jpg"
-            alt="Featured Post"
-            layout="responsive"
-            width={100} // Acts as a ratio
-            height={75} // Acts as a ratio
-            className="z-0"
-          />
-        </div>
+  <Image
+    src="/image/guywithheadset.jpg"
+    alt="Featured Post"
+    width={1000}  // Use larger values to maintain aspect ratio
+    height={750}
+    className="z-0 w-full h-auto" // Ensures responsiveness
+  />
+</div>
+
         {/* Content Container */}
         <div className="md:absolute md:-bottom-30 md:right-0 rounded-md max-w-5xl  bg-white dark:bg-[#181A2A] bg-opacity-80 md:p-6 space-y-6">
           <div className="flex gap-2 items-center font-rob">

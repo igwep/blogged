@@ -61,17 +61,16 @@ const RecentPost = () => {
         <section className="flex gap-4  flex-col md:flex-row items-start md:mt-24 justify-between w-full">
           {/* Image Section */}
           <div className="w-full md:w-[75%] md:h-[500px] mt-4 md:mt-0 flex">
-            <Image
-              src={latestPost?.mainImage?.asset?.url || "/placeholder-image.jpg"} // Fallback image
-              alt={latestPost?.title || "Latest Post Image"}
-              layout="responsive"
-              width={712}
-              height={400}
-              priority
-              unoptimized // Ensures Next.js doesn’t block external images
-              className="rounded-xl"
-            />
-          </div>
+  <Image
+    src={latestPost?.mainImage?.asset?.url || "/placeholder-image.jpg"} // Fallback image
+    alt={latestPost?.title || "Latest Post Image"}
+    width={712}
+    height={400}
+    priority
+    unoptimized // Ensures Next.js doesn’t block external images
+    className="rounded-xl w-full h-auto"
+  />
+</div>
 
           {/* Text Content */}
           <div className="w-full md:w-1/2 text-start space-y-8 md:text-left">
