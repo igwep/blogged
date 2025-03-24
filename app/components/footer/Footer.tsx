@@ -65,7 +65,7 @@ Get a response tomorrow if you submit by 9pm today. If we received after 9pm wil
 
        <div className="flex gap-2 items-center ">
                   <Image
-                    src="/svg/MainLogo.svg"
+                    src="/svg/mainLogo.svg"
                     alt="logo"
                     width={40}
                     height={40}
