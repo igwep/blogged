@@ -1,6 +1,6 @@
 "use client"
 import { useQuery } from "@tanstack/react-query";
-import { fetchAllPosts, fetchLatestPost } from "../utils/FetchBlogs";
+import { fetchAllPosts, fetchLatestPost, fetchFeaturedPost } from "../utils/FetchBlogs";
 
 
 export const useAllPosts = () => {
@@ -17,3 +17,10 @@ export const useAllPosts = () => {
       queryFn: fetchLatestPost,
     });
   };
+  export const useFeaturedPost = () => {
+    return useQuery({
+      queryKey: ['featuredPost'],
+      queryFn: fetchFeaturedPost,
+    });
+  };
+

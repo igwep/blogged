@@ -3,8 +3,9 @@ import React from 'react'
 import ViewAllBtn from '../buttons/ViewAllBtn'
 import Image from 'next/image'
 import ReadMoreBtn from '../buttons/ReadMoreBtn'
-import { useAllPosts, useLatestPost } from '@/app/hooks/quearies'
+import {  useLatestPost } from '@/app/hooks/quearies'
 import { format } from 'date-fns' // Import date formatting
+
 
 
 interface Category {
@@ -22,7 +23,7 @@ const Loader = () => (
 
 const RecentPost = () => {
   // Fetch all posts and latest post
-  const {  isLoading: loadingPosts, error: errorPosts } = useAllPosts();
+ // const {  isLoading: loadingPosts, error: errorPosts } = useAllPosts();
   const { data: latestPost, isLoading: loadingLatest, error: errorLatest } = useLatestPost();
 
 
@@ -39,26 +40,27 @@ const RecentPost = () => {
   const previewText = latestPost?.body
     ? extractTextFromHTML(latestPost.body).slice(0, 250) + "..."
     : "No description available.";
+
   
 
   return (
-    <div className='w-full pt-10 md:px-28 px-8 bg-gray-100 dark:bg-[#181A2A] space-y-6'>
+    <div className='w-full  pt-10 md:px-28 px-8 bg-gray-100 dark:bg-[#181A2A] space-y-6'>
       <div className='flex justify-between items-center'>
         <h1 className='md:text-5xl text-3xl font-semibold dark:text-white'>Our Recent Post</h1>
         <ViewAllBtn>View All</ViewAllBtn>
       </div>
 
       {/* If loading, show the loader */}
-      {(loadingLatest || loadingPosts) && <Loader />}
+      {(loadingLatest) && <Loader />}
 
       {/* If error, display error message */}
-      {(errorLatest || errorPosts) && (
+      {(errorLatest) && (
         <p className="text-red-500 text-center">Error loading posts. Please try again.</p>
       )}
 
       {/* Render only when data is available */}
-      {!loadingLatest && !loadingPosts && !errorLatest && !errorPosts && latestPost && (
-        <section className="flex gap-4  flex-col md:flex-row items-start md:mt-24 justify-between w-full">
+      {!loadingLatest &&   !errorLatest && latestPost && (
+        <section className="md:flex hidden gap-4     flex-col md:flex-row items-start md:mt-24 justify-between w-full">
           {/* Image Section */}
           <div className="w-full md:w-[75%] md:h-[500px] mt-4 md:mt-0 flex">
   <Image
@@ -91,7 +93,7 @@ const RecentPost = () => {
             </p>
 
             {/* CTA Button */}
-            <ReadMoreBtn>Read more</ReadMoreBtn>
+            <ReadMoreBtn  latestPost={latestPost} >Read more</ReadMoreBtn>
           </div>
           
 

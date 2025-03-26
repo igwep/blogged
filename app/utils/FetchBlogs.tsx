@@ -84,10 +84,10 @@ export const fetchAllPosts = async () => {
 };
 
 
-  
-
-  export const fetchLatestPost = async () => {
-    const query = `*[_type == "post"] | order(_createdAt desc) [0] {
+export const fetchLatestPost = async () => {
+  const query = `
+    *[_type == "post" && !("Featured" in categories[]->title)] 
+    | order(_createdAt desc)[0] {
       title, 
       slug, 
       mainImage {
@@ -101,10 +101,38 @@ export const fetchAllPosts = async () => {
         title,
         slug
       }
-    }`;
+    }
+  `;
   
-    const result = await sanityClient.fetch(query);
-    console.log("Latest Post:", result); //  Log the latest post with categories
-    return result;
-  };
+  const result = await sanityClient.fetch(query);
+  console.log("Latest Post:", result); // Log the latest post excluding 'Featured' category
+  return result;  
+};
+export const fetchFeaturedPost = async () => {
+  const query = `
+    *[_type == "post" && "Featured" in categories[]->title] 
+    | order(_createdAt desc)[0] {
+     _id,  
+      title, 
+      slug, 
+      mainImage {
+        asset->{
+          url
+        }
+      }, 
+      body, 
+      _createdAt,
+      categories[]->{
+        title,
+        slug
+      }
+    }
+  `;
+  
+  const result = await sanityClient.fetch(query);
+  console.log("Featured Post:", result);
+  return result;  
+};
+
+
   

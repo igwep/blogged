@@ -4,6 +4,7 @@ import { useAllPosts } from "@/app/hooks/quearies";
 import Image from "next/image";
 import { format } from "date-fns"; // For date formatting
 import { useRouter } from "next/navigation";
+//import { useFooterContext } from "@/app/context/FooterProvider";
 //import { usePost } from "@/app/context/PostProvider";
 
 interface Category {
@@ -22,27 +23,39 @@ interface Post {
   categories?: Category[];
 }
 const PostCards = ({ 
+  posts,
   slice, 
   numberOfCards, 
   startIndex,
   excludeId
 }: { 
+  posts?: Post[];
   slice: boolean;  
   numberOfCards: number; 
   startIndex: number; 
   excludeId?: string;
 }) => {
-  const { data: posts, isLoading, error } = useAllPosts();
+  const { data: fetchedPosts, isLoading, error } = useAllPosts()
+  //const {  setIsSearchOpen } = useFooterContext();
+  
   const router = useRouter();
   const handlePostClick = (post: Post) => {
     router.push(`/post/${post._id}`);
+   /*  if (posts?.length) {
+      setIsSearchOpen(false);
+    } */
+   
   };
+  
+  
   //const { setSelectedPost } = usePost();
+  
+  const Allposts = posts?.length ? posts : fetchedPosts;
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p className="text-red-500">Error loading posts.</p>;
 
-  const filteredPosts = posts?.filter((post: Post) => post._id !== excludeId);
+  const filteredPosts = Allposts?.filter((post: Post) => post._id !== excludeId);
 
   // Conditionally slice the posts if `slice` is true
   const displayedPosts = slice ? filteredPosts?.slice(startIndex, numberOfCards) : filteredPosts;

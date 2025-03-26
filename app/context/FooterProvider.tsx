@@ -49,6 +49,10 @@ import { createContext, useState, useContext } from "react";
 interface FooterContextType {
   footerHeight: number;
   setFooterHeight: (height: number) => void;
+  isSearchOpen: boolean;
+  setIsSearchOpen: (open: boolean) => void;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
 }
 
 // Create context with default values
@@ -66,9 +70,20 @@ export const useFooterContext = () => {
 // Provider component
 export const FooterProvider = ({ children }: { children: React.ReactNode }) => {
   const [footerHeight, setFooterHeight] = useState(0);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <FooterContext.Provider value={{ footerHeight, setFooterHeight }}>
+    <FooterContext.Provider
+      value={{
+        footerHeight,
+        setFooterHeight,
+        isSearchOpen,
+        setIsSearchOpen,
+        searchQuery,
+        setSearchQuery,
+      }}
+    >
       {children}
     </FooterContext.Provider>
   );

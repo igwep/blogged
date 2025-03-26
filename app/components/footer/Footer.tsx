@@ -1,6 +1,7 @@
 
 //import React, {useEffect, useRef} from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 //import { useFooterContext } from '@/app/context/FooterProvider';
 
 
@@ -30,7 +31,6 @@ const Footer = () => {
                   height={700}
                 />
               </div>
-        
               {/* Bottom Right Pattern */}
               <div className="absolute md:bottom-[-10px] bottom-[-100px] right-0 w-64 h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
                 <Image
@@ -52,9 +52,7 @@ className='bg-white dark:bg-[#181A2A] dark:placeholder:text-white px-4 w-72 roun
 <button className='border border-white dark:border-[#181A2A] dark:text-[#181A2A] font-semibold text-white px-6 py-3 rounded-md '>
     Get started
 </button>
-
 </div>
-
 <span className='text-center text-[#BBBBBB] dark:text-[#21243a]'>
 Get a response tomorrow if you submit by 9pm today. If we received after 9pm will get a reponse the following day.
 </span>
@@ -62,7 +60,6 @@ Get a response tomorrow if you submit by 9pm today. If we received after 9pm wil
     </section>
     <section className='bg-white dark:bg-[#181A2A] flex justify-center md:p-10 py-8 '>
        <div className='flex flex-col items-center gap-6 w-full'> 
-
        <div className="flex gap-2 items-center ">
                   <Image
                     src="/svg/mainLogo.svg"
@@ -73,23 +70,19 @@ Get a response tomorrow if you submit by 9pm today. If we received after 9pm wil
                   />
                   <span className="text-3xl font-bold dark:text-white">BlogSpot</span>
                 </div>
-
                 <ul className='flex gap-8  dark:text-white'>
-                    <li>Home</li>
-                    <li>Blog</li>
-                    <li>About</li>
-                    <li>Contact Us</li>
+                    <li><Link href="/">Home</Link></li>
+                    <li><Link href="/blog">Blog</Link></li>
+                    <li><Link href="/about">About</Link> </li>
+                    <li><Link href="/contact">Contact</Link></li>
                 </ul>
-
                 <div className='flex gap-4 text-white dark:text-black'>{/* social media */}
                     <button className='rounded-full bg-[#7C4EE4] px-2 py-1'>FB</button>
                     <button className='rounded-full bg-[#7C4EE4] px-2 py-1'>IG</button>
                     <button className='rounded-full bg-[#7C4EE4] px-2 py-1 text-sm'>LN</button>
                     <button className='rounded-full bg-[#7C4EE4] px-2 py-1'>YT</button>
-
                 </div>
                 <div className='border border-[#7C4EE4] w-full'>
-
                 </div>
                 <span className='pt-5 pb-8 dark:text-white'>
                 Copyright BlogSpot Inc © {new Date().getFullYear()}. All Rights Reserved.
