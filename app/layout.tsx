@@ -5,6 +5,7 @@ import { Raleway, Roboto } from "next/font/google";
 //import Footer from "./components/footer/Footer";
 import QueryProvider from "./providers/QueryClient";
 import { FooterProvider } from "./context/FooterProvider";
+import { ThemeProvider } from "./context/ThemeToggle";
 //import SearchPage from "./components/search/SearchModal";
 import "./globals.css";
 import LayoutContent from "./LayoutContent";
@@ -40,11 +41,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${raleway.variable} antialiased`}>
+        <ThemeProvider>
         <QueryProvider>
           <FooterProvider>
             <LayoutContent>{children}</LayoutContent>
           </FooterProvider>
         </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
