@@ -88,6 +88,7 @@ export const fetchLatestPost = async () => {
   const query = `
     *[_type == "post" && !("Featured" in categories[]->title)] 
     | order(_createdAt desc)[0] {
+       _id,  
       title, 
       slug, 
       mainImage {

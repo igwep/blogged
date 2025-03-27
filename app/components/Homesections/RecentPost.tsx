@@ -6,6 +6,7 @@ import ReadMoreBtn from '../buttons/ReadMoreBtn'
 import {  useLatestPost } from '@/app/hooks/quearies'
 import { format } from 'date-fns' // Import date formatting
 import LoadingSpinner from '../LoadingSpinner'
+import PostCards from './PostCards'
 
 
 
@@ -45,6 +46,7 @@ const RecentPost = () => {
   
 
   return (
+    <>
     <div className='w-full  pt-10 md:px-28 px-8 bg-gray-100 dark:bg-[#181A2A] space-y-6'>
       <div className='flex justify-between items-center'>
         <h1 className='md:text-5xl text-2xl font-semibold dark:text-white'>Our Recent Post</h1>
@@ -103,7 +105,10 @@ const RecentPost = () => {
 
         </section>
       )}
+   
     </div>
+    <PostCards slice={true} numberOfCards={4} startIndex={1} excludeId={latestPost._id}/>
+    </>
   )
 }
 

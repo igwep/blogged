@@ -56,7 +56,7 @@ const SecondFeaturedPost = () => {
             alt={latestPost.title}
             width={1000}
             height={750}
-            className="z-0 w-full h-auto rounded-xl"
+            className="z-0 w-full md:h-[413.58px] h-[200px] rounded-xl object-center object-cover"
           />
         </div>
         {/* Content Container */}
