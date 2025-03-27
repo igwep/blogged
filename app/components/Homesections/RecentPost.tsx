@@ -107,7 +107,9 @@ const RecentPost = () => {
       )}
    
     </div>
-    <PostCards slice={true} numberOfCards={4} startIndex={1} excludeId={latestPost._id}/>
+    {latestPost && (
+  <PostCards slice={true} numberOfCards={4} startIndex={1} excludeId={latestPost._id} />
+)}
     </>
   )
 }
