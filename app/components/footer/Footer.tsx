@@ -20,7 +20,7 @@ const Footer = () => {
     <>
     <section
     /* ref={footerRef} */
-    className='relative flex font-body justify-center items-center h-auto w-full bg-[#7C4EE4] py-20 px-4 md:px-20 overflow-hidden'>{/* subscription */}
+    className='relative flex font-body justify-center items-center h-auto w-full bg-[#7C4EE4] py-20  md:px-28 px-8 overflow-hidden'>{/* subscription */}
         {/* Top Left Pattern */}
               <div className="absolute md:top-[-50px] top-[-50px] left-0 w-64  h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
                 <Image
@@ -45,14 +45,17 @@ const Footer = () => {
 <h1 className='md:text-5xl text-3xl text-center font-semibold text-white dark:text-[#181A2A]'>
 Get our stories delivered  From us to your inbox weekly.
 </h1>
-<div className='flex gap-2'>{/* email input  */}
-<input type="email"
-placeholder='Your Email'
-className='bg-white dark:bg-[#181A2A] dark:placeholder:text-white px-4 w-72 rounded-md' />
-<button className='border border-white dark:border-[#181A2A] dark:text-[#181A2A] font-semibold text-white px-6 py-3 rounded-md '>
+<div className="flex gap-2 w-full flex-nowrap">
+  <input
+    type="email"
+    placeholder="Your Email"
+    className="bg-white dark:bg-[#181A2A] dark:placeholder:text-white px-4 py-3 flex-grow min-w-0 rounded-md"
+  />
+  <button className="border border-white dark:border-[#181A2A] dark:text-[#181A2A] font-semibold text-white px-6 py-3 rounded-md whitespace-nowrap">
     Get started
-</button>
+  </button>
 </div>
+
 <span className='text-center text-[#BBBBBB] dark:text-[#21243a]'>
 Get a response tomorrow if you submit by 9pm today. If we received after 9pm will get a reponse the following day.
 </span>
