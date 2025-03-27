@@ -4,6 +4,7 @@ import { useAllPosts } from "@/app/hooks/quearies";
 import Image from "next/image";
 import { format } from "date-fns"; // For date formatting
 import { useRouter } from "next/navigation";
+import LoadingSpinner from "../LoadingSpinner";
 //import { useFooterContext } from "@/app/context/FooterProvider";
 //import { usePost } from "@/app/context/PostProvider";
 
@@ -52,7 +53,13 @@ const PostCards = ({
   
   const Allposts = posts?.length ? posts : fetchedPosts;
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <LoadingSpinner />
+      </div>
+    );
+  }
   if (error) return <p className="text-red-500">Error loading posts.</p>;
 
   const filteredPosts = Allposts?.filter((post: Post) => post._id !== excludeId);

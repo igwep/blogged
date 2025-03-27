@@ -9,6 +9,7 @@ import { ThemeProvider } from "./context/ThemeToggle";
 //import SearchPage from "./components/search/SearchModal";
 import "./globals.css";
 import LayoutContent from "./LayoutContent";
+import BackToTopButton from "./components/BackToTopBtn";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const raleway = Raleway({ variable: "--font-raleway", subsets: ["latin"] });
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
         <QueryProvider>
           <FooterProvider>
+            <BackToTopButton />
             <LayoutContent>{children}</LayoutContent>
           </FooterProvider>
         </QueryProvider>

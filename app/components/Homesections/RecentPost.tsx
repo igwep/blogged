@@ -5,6 +5,7 @@ import Image from 'next/image'
 import ReadMoreBtn from '../buttons/ReadMoreBtn'
 import {  useLatestPost } from '@/app/hooks/quearies'
 import { format } from 'date-fns' // Import date formatting
+import LoadingSpinner from '../LoadingSpinner'
 
 
 
@@ -15,11 +16,11 @@ interface Category {
 
 
 //  Loading Component
-const Loader = () => (
+/* const Loader = () => (
   <div className="flex justify-center items-center w-full h-[500px]">
     <p className="text-lg text-[#181A2A] dark:text-gray-300">Loading...</p>
   </div>
-);
+); */
 
 const RecentPost = () => {
   // Fetch all posts and latest post
@@ -46,12 +47,14 @@ const RecentPost = () => {
   return (
     <div className='w-full  pt-10 md:px-28 px-8 bg-gray-100 dark:bg-[#181A2A] space-y-6'>
       <div className='flex justify-between items-center'>
-        <h1 className='md:text-5xl text-3xl font-semibold dark:text-white'>Our Recent Post</h1>
+        <h1 className='md:text-5xl text-2xl font-semibold dark:text-white'>Our Recent Post</h1>
         <ViewAllBtn>View All</ViewAllBtn>
       </div>
 
       {/* If loading, show the loader */}
-      {(loadingLatest) && <Loader />}
+      {(loadingLatest) &&  <div className="flex items-center justify-center ">
+      <LoadingSpinner />
+    </div>}
 
       {/* If error, display error message */}
       {(errorLatest) && (

@@ -57,7 +57,7 @@ const Links = () => {
                 className="w-64 p-2 border border-gray-300 rounded-md focus:outline-none"
                 autoFocus
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)} // Update global search state
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
               <button className="ml-2 text-gray-500 text-sm" onClick={handleCancelSearch}>
                 Cancel
@@ -66,12 +66,18 @@ const Links = () => {
           ) : (
             <ul className="flex gap-8">
               <li>
-                <Link href="/blog" className={pathname === "/blog" ? "text-[#7C4EE4]" : "hover:text-[#7C4EE4]"}>
+                <Link
+                  href="/blog"
+                  className={pathname === "/blog" ? "text-[#7C4EE4]" : "hover:text-[#7C4EE4]"}
+                >
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/about" className={pathname === "/about" ? "text-[#7C4EE4]" : "hover:text-[#7C4EE4]"}>
+                <Link
+                  href="/about"
+                  className={pathname === "/about" ? "text-[#7C4EE4]" : "hover:text-[#7C4EE4]"}
+                >
                   About
                 </Link>
               </li>
@@ -84,60 +90,88 @@ const Links = () => {
             </button>
           )}
 
-          <a href="/contact" className="px-8 py-3 bg-[#7C4EE4] rounded-md text-white dark:text-black">
+          <a
+            href="/contact"
+            className="px-8 py-3 bg-[#7C4EE4] rounded-md text-white dark:text-black"
+          >
             Contact
           </a>
         </div>
         <ThemeToggle />
       </div>
 
-      {/* Mobile Menu Button */}
-      <button className="md:hidden flex items-center" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
-        <Image src="/svg/Menu.svg" alt="Menu" width={30} height={30} className="dark:invert" />
-      </button>
-
-      {/* Mobile Navigation Drawer */}
-      <div
-        className={`fixed top-0 right-0 h-full w-64 p-2 bg-white dark:bg-[#181A2A] shadow-lg transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out z-50`}
-      >
-        <button className="absolute top-4 right-4" onClick={() => setIsOpen(false)} aria-label="Close Menu">
-          <Image src="/svg/close.svg" alt="Close" width={25} height={25} className="dark:invert" />
-        </button>
-
-        <nav className="flex flex-col items-center mt-16 gap-6 text-lg">
+      {/* Mobile Navigation Header */}
+      <div className={`${isSearchOpen ? "md:hidden flex  items-center justify-between w-full px-4 py-4 bg-white dark:bg-[#181A2A]" :"md:hidden flex  items-center justify-between  px-4 py-4 bg-white dark:bg-[#181A2A]" }`}>
+        
+        {/* Right Side */}
+        <div className="flex items-center w-full gap-4">
           {isSearchOpen ? (
-            <div className="w-full flex flex-col items-center">
+            <div className="flex items-center w-full gap-2">
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none"
+                className="w-[90%] md:w-[80%] p-3 border border-gray-300 rounded-md focus:outline-none"
                 autoFocus
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <button className="mt-2 text-sm text-gray-500" onClick={handleCancelSearch}>
+              <button className="text-gray-500 text-sm" onClick={handleCancelSearch}>
                 Cancel
               </button>
             </div>
           ) : (
             <>
-              <Link href="/blog" onClick={() => setIsOpen(false)}>
-                Blog
-              </Link>
-              <Link href="/about" onClick={() => setIsOpen(false)}>
-                About
-              </Link>
+              <button onClick={handleSearchClick}>
+                <SearchButton />
+              </button>
+              <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
+                <Image
+                  src="/svg/Menu.svg"
+                  alt="Menu"
+                  width={30}
+                  height={30}
+                  className="dark:invert"
+                />
+              </button>
             </>
           )}
+        </div>
+      </div>
 
-          {!isSearchOpen && (
-            <button onClick={handleSearchClick}>
-              <SearchButton />
-            </button>
-          )}
-
+      {/* Mobile Navigation Drawer */}
+      <div
+        className={`fixed md:hidden top-0 right-0 h-full w-64 p-2 bg-white dark:bg-[#181A2A] shadow-lg transform ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out z-50`}
+      >
+        <button
+          className="absolute top-4 right-4"
+          onClick={() => setIsOpen(false)}
+          aria-label="Close Menu"
+        >
+          <Image
+            src="/svg/close.svg"
+            alt="Close"
+            width={25}
+            height={25}
+            className="dark:invert"
+          />
+        </button>
+        <nav className="flex flex-col items-center mt-16 gap-6 text-lg">
+        <Link
+                  href="/blog"
+                  className={pathname === "/blog" ? "text-[#7C4EE4]" : "hover:text-[#7C4EE4]"}
+                >
+                  Blog
+                </Link>
+            
+                <Link
+                  href="/about"
+                  className={pathname === "/about" ? "text-[#7C4EE4]" : "hover:text-[#7C4EE4]"}
+                >
+                  About
+                </Link>
+        
           <Link
             href="/contact"
             className="px-6 py-2 w-full bg-[#7C4EE4] text-center rounded-md text-white dark:text-black"
@@ -149,9 +183,15 @@ const Links = () => {
         </nav>
       </div>
 
-      {/* Overlay when menu is open */}
-      {isOpen && <div className="fixed inset-0 bg-black opacity-50 z-40" onClick={() => setIsOpen(false)} />}
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div
+          className="fixed md:hidden inset-0 bg-black opacity-50 z-40"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
     </>
+
   );
 };
 

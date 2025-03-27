@@ -21,7 +21,7 @@ const SearchPage = () => {
   if (!isSearchOpen) return null; // Don't render if search is closed
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white p-6">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white md:px-28 px-8">
     <h1 className="text-2xl font-bold mb-4">Search Results for: &quot;{searchQuery}&quot;</h1>
 
     {searchQuery.trim() === "" ? (

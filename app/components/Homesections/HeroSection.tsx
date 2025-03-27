@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useFeaturedPost } from "@/app/hooks/quearies";
 import { useRouter } from "next/navigation";
+import LoadingSpinner from "../LoadingSpinner";
 
 export default function HeroSection() {
   const { data: featuredPost, isLoading, isError } = useFeaturedPost();
@@ -24,7 +25,11 @@ export default function HeroSection() {
   };
 
   if (isLoading) {
-    return <p className="text-white text-center">Loading...</p>;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   if (isError || !featuredPost) {
@@ -42,6 +47,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative flex py-4 flex-col md:flex-row items-center justify-between w-full h-auto md:h-[80vh] bg-[#7C4EE4] px-8 md:px-28 overflow-hidden">
+      
       {/* Top Left Pattern */}
       <div className="absolute top-[-50px] left-0 w-64 h-64 md:w-[600px] md:h-60 opacity-50 pointer-events-none">
         <Image src="/svg/parttern.svg" alt="Pattern" width={900} height={700} className="w-full h-auto" />

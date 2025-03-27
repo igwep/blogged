@@ -4,17 +4,25 @@ import Image from "next/image";
 import ReadMoreBtn from "../buttons/ReadMoreBtn";
 import { useLatestPost } from "@/app/hooks/quearies";
 import { format } from "date-fns";
+import LoadingSpinner from "../LoadingSpinner";
 
-const Loader = () => (
+
+/* const Loader = () => (
   <div className="flex justify-center items-center w-full h-[500px]">
     <p className="text-lg text-[#181A2A] dark:text-gray-300">Loading...</p>
   </div>
-);
+); */
 
 const SecondFeaturedPost = () => {
   const { data: latestPost, isLoading, error } = useLatestPost();
 
-  if (isLoading) return <Loader />;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <LoadingSpinner />
+      </div>
+    );
+  };
   if (error) return <p className="text-red-500">Failed to load post.</p>;
   if (!latestPost) return <p className="text-gray-500">No latest post available.</p>;
 
@@ -31,6 +39,9 @@ const SecondFeaturedPost = () => {
   
   const previewText = latestPost.body
     ? extractTextFromHTML(latestPost.body).slice(0, 250) + "..."
+    : "No description available.";
+    const previewTextMobile = latestPost.body
+    ? extractTextFromHTML(latestPost.body).slice(0, 150) + "..."
     : "No description available.";
 
   return (
@@ -59,8 +70,11 @@ const SecondFeaturedPost = () => {
           <h1 className="md:text-4xl text-3xl font-bold text-[#333333] dark:text-white">
             {latestPost.title}
           </h1>
-          <p className="text-base text-[#333333] dark:text-white mt-4 md:w-[90%]">
+          <p className="text-base md:block hidden text-[#333333] dark:text-white mt-4 md:w-[90%]">
             {previewText}
+          </p>
+          <p className="text-base block md:hidden text-[#333333] dark:text-white mt-4 md:w-[90%]">
+            {previewTextMobile}
           </p>
           <ReadMoreBtn latestPost={latestPost}>
             Read more

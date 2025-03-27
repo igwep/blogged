@@ -21,6 +21,7 @@ export const useAllPosts = () => {
     return useQuery({
       queryKey: ['featuredPost'],
       queryFn: fetchFeaturedPost,
+      
     });
   };
 

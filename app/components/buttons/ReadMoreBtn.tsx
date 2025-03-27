@@ -33,11 +33,16 @@ const router = useRouter();
 
   return (
     <button
-      className="px-8 py-3 font-semibold dark:bg-[#181A2A] cursor-pointer text-[#7C4EE4] rounded-lg border-2 border-[#7C4EE4]"
-      onClick={handlePostClick} // Ensure onClick is added
-    >
-      {children}
-    </button>
+    className="px-8 py-3 font-semibold text-[#7C4EE4] dark:bg-[#181A2A] 
+               cursor-pointer rounded-lg border-2 border-[#7C4EE4] 
+               transition duration-300 ease-in-out 
+               hover:bg-[#7C4EE4] hover:text-white 
+               active:scale-95 active:bg-[#5a33b1] 
+               focus:ring-2 focus:ring-[#7C4EE4] focus:ring-opacity-50"
+    onClick={handlePostClick} 
+  >
+    {children}
+  </button>
   );
 };
 
