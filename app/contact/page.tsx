@@ -6,8 +6,8 @@ import ContactForm from '../components/contact/ContactForm'
 const page = () => {
   return (
     <div className='pb-8 dark:bg-[#181A2A]'>
-      <section className='flex py-4 bg-gray-100 dark:bg-[#181A2A]  flex-col   items-center  w-full h-auto   px-8 md:px-28'>
-      <div className="w-full   mt-8 flex flex-col items-center text-start space-y-2 md:text-center">
+      <section className='flex py-4 bg-gray-100 dark:bg-[#181A2A]  flex-col   items-center  w-full h-auto   '>
+      <div className="w-full   mt-8 flex flex-col items-center text-start space-y-2 md:text-center px-8 md:px-28">
     
         <h1 className="md:text-5xl text-3xl dark:text-white font-semibold text-center font-body leading-snug md:w-1/2  text-[#333333]">
         Get in Touch
@@ -17,11 +17,11 @@ const page = () => {
         </p>
       </div>
       <div className="bg-gray-100 p-10 text-center dark:bg-[#181A2A]  w-full">
-      
 
-      <div className="grid md:grid-cols-3 gap-6 font-body  dark:bg-[#181A2A]   text-center">
+      <div className="grid   md:grid-cols-2 lg:grid-cols-3 md:gap-6 gap-4 font-body w-full text-center">
+
   {/* Office */}
-  <div className="bg-white  py-10 px-8 sm:px-12 md:px-16 dark:bg-[#1f2133]   rounded-lg space-y-6">
+  <div className="bg-white w-full    py-10 px-8 sm:px-12 md:px-16 dark:bg-[#1f2133]   rounded-lg space-y-6">
     <div className="w-14 h-14 rounded-full bg-[#7C4EE4] flex items-center justify-center mx-auto mb-3 p-4">
       <Image src="/svg/home.svg" alt="Office Icon" width={24} height={24} />
     </div>

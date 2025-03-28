@@ -1,9 +1,9 @@
 import { createClient } from "@sanity/client";
 
 export const sanityClient = createClient({
-  projectId: "ejifguxb",
-  dataset: "production",
-  apiVersion: "2023-03-09",
-  token: "skHU4g30bd1HMThLIGqMO6PWLKrFBNmfBOkoiTzQj86xu5z2xlWHFAZZfZNmwNl48SIcoiBstjEzZBeIu01K5yAFABVgHZEsNQsDe1ykMn4tbKtpLVFnHs0NA4Bn7b9hj0z8iwIvKcBaGdAB6ptcEfRFWqEhKFOsMd7fCz3pQqk2o7njYxOT", // Required for writing data
-  useCdn: false, // Disable CDN for write operations
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
+  token: process.env.SANITY_TOKEN, // No `NEXT_PUBLIC_` prefix here for server-side use
+  useCdn: process.env.NEXT_PUBLIC_SANITY_USE_CDN === 'true'
 });

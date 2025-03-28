@@ -47,7 +47,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="md:-mt-10 relative z-50 max-w-3xl mx-auto bg-white dark:bg-[#1f2133] p-12 rounded-2xl shadow-md">
+    <div className="md:-mt-10 relative z-30 max-w-3xl mx-auto bg-white dark:bg-[#1f2133] p-12 rounded-2xl shadow-md">
   {error && <p className="text-red-500 text-sm">{error}</p>}
   {success && <p className="text-green-500 text-sm">{success}</p>}
   

@@ -159,6 +159,7 @@ const Links = () => {
         </button>
         <nav className="flex flex-col items-center mt-16 gap-6 text-lg">
         <Link
+                  onClick={() => setIsOpen(false)}
                   href="/blog"
                   className={pathname === "/blog" ? "text-[#7C4EE4]" : "hover:text-[#7C4EE4]"}
                 >
@@ -166,6 +167,7 @@ const Links = () => {
                 </Link>
             
                 <Link
+                  onClick={() => setIsOpen(false)}
                   href="/about"
                   className={pathname === "/about" ? "text-[#7C4EE4]" : "hover:text-[#7C4EE4]"}
                 >
@@ -173,6 +175,7 @@ const Links = () => {
                 </Link>
         
           <Link
+            
             href="/contact"
             className="px-6 py-2 w-full bg-[#7C4EE4] text-center rounded-md text-white dark:text-black"
             onClick={() => setIsOpen(false)}

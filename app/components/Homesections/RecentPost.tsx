@@ -100,9 +100,6 @@ const RecentPost = () => {
             {/* CTA Button */}
             <ReadMoreBtn  latestPost={latestPost} >Read more</ReadMoreBtn>
           </div>
-          
-
-
         </section>
       )}
    
