@@ -145,17 +145,11 @@ const Links = () => {
         } transition-transform duration-300 ease-in-out z-50`}
       >
         <button
-          className="absolute top-4 right-4"
+          className="absolute cursor-pointer top-4 right-4"
           onClick={() => setIsOpen(false)}
           aria-label="Close Menu"
         >
-          <Image
-            src="/svg/close.svg"
-            alt="Close"
-            width={25}
-            height={25}
-            className="dark:invert"
-          />
+         X
         </button>
         <nav className="flex flex-col items-center mt-16 gap-6 text-lg">
         <Link
