@@ -32,6 +32,23 @@ const Links = () => {
       router.push(`?query=${searchQuery}`, { scroll: false });
     }
   }, [searchQuery, router]);
+  useEffect(() => {
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+  if (isOpen) {
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+  } else {
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+  }
+
+  return () => {
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+  };
+}, [isOpen]);
+
 
   const handleSearchClick = () => {
     setIsSearchOpen(true);
@@ -140,7 +157,7 @@ const Links = () => {
 
       {/* Mobile Navigation Drawer */}
       <div
-        className={`fixed md:hidden top-0 right-0 h-full w-64 p-2 bg-white dark:bg-[#181A2A] shadow-lg transform ${
+        className={`fixed md:hidden top-0 right-0 h-full w-64 p-2 z-50 bg-white dark:bg-[#181A2A] shadow-lg transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out z-50`}
       >

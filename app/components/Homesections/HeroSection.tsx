@@ -76,7 +76,7 @@ export default function HeroSection() {
       </div>
 
       {/* Right Image */}
-      <div className="w-full z-50 md:w-1/2 mt-4 md:mt-0 flex justify-center">
+      <div className="w-full z-30 md:w-1/2 mt-4 md:mt-0 flex justify-center">
         {featuredPost.mainImage?.asset?.url && (
           <Image
             src={featuredPost.mainImage.asset.url}
