@@ -20,9 +20,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BlogSpot",
+  title: "BlogSpot | Share Your Voice with the World",
   description:
-    "A blogging platform that allows users to create, share, and manage their blogs through Sanity UI.",
+    "BlogSpot is a modern blogging platform that allows users to create, share, and manage their blogs effortlessly using Sanity UI and Next.js.",
+  metadataBase: new URL("https://blogged-48qg.vercel.app"), // no trailing slash
+  openGraph: {
+    title: "BlogSpot | Share Your Voice with the World",
+    description:
+      "BlogSpot is a modern blogging platform that allows users to create, share, and manage their blogs effortlessly using Sanity UI and Next.js.",
+    url: "https://blogged-48qg.vercel.app",
+    siteName: "BlogSpot",
+    type: "website",
+    images: [
+      {
+        url: "https://blogged-48qg.vercel.app/assets/svg/mainLogo.svg", // ✅ absolute path to your preview image
+        width: 1200,
+        height: 630,
+        alt: "BlogSpot - Create and Share Your Blogs",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BlogSpot | Share Your Voice with the World",
+    description:
+      "BlogSpot is a modern blogging platform that allows users to create, share, and manage their blogs effortlessly using Sanity UI and Next.js.",
+    images: [
+      "https://blogged-48qg.vercel.app/assets/svg/mainLogo.svg", //  absolute path
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 // Layout Component with Conditional Rendering
